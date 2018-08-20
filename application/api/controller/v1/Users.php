@@ -63,4 +63,8 @@ class Users
         }
         abort('401', '头像上传失败');
     }
+    function test()
+    {
+        return 'xixi';
+    }
 }
