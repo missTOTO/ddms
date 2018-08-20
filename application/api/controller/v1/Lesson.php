@@ -70,5 +70,8 @@ class Lesson
     	$result = Model('LessonReplies','logic')->createReplies($data);
         return json($result);
     }
-
+    public function test2()
+    {
+        return 'hehe';
+    }
 }
