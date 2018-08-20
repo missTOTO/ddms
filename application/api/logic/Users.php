@@ -7,8 +7,7 @@
  */
 
 namespace app\api\logic;
-
-
+use app\api\validate\User;
 class Users
 {
 	/**
@@ -33,11 +32,12 @@ class Users
      */
     public function updateUserInfo($data, $id)
     {
-    	$result = Model('Users')->isUpdate(true)->save($data, ['id' => $id]);
-    	if ($result) {
-    		return $result;
+    	$Users = Model('Users');
+    	$result = $Users->validate(true)->isUpdate(true)->save($data, ['id' => $id]);
+    	if (false === $result) {
+    		return $Users->getError();
     	} else {
-    		abort('404','更新失败');
+    		return $result;
     	}
     }
     /**

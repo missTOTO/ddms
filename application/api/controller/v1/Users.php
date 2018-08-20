@@ -4,6 +4,7 @@ use think\Request;
 use think\Cache;
 use OSS\OssClient;
 use OSS\OssException;
+
 class Users
 {
 	// 获取用户信息
@@ -62,9 +63,5 @@ class Users
             return json($result['info']['url']);
         }
         abort('401', '头像上传失败');
-    }
-    function test()
-    {
-        return 'xixi';
     }
 }
