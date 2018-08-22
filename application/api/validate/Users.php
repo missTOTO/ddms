@@ -6,7 +6,7 @@
  * Time: 18:27
  */
 
-namespace app\common\validate;
+namespace app\api\validate;
 
 use think\Validate;
 
@@ -20,6 +20,7 @@ class Users extends Validate
     protected $message = [
     	'name.require'	=>	'名称必须',
     	'name.max'		=>	'名称最多不能超过4个字符',
+    	'name.unique'	=>	'该名称已被使用',
     	'phone'			=>	'手机号不符合规范'
 
     ];

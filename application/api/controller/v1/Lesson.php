@@ -71,4 +71,9 @@ class Lesson
         return json($result);
     }
     
+    public function delete($id)
+    {
+        $result = Model('LessonCatalog')->destroy($id);
+        return json($result);
+    }
 }

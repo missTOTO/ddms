@@ -89,4 +89,25 @@ Class VerificationCodes
 
 		return json(['key' => $key, 'expired_at' => $expiredAt]);
 	}
+    /**
+     * 读取并检查验证码
+     * @param  [type] $verification_key [description]
+     * @return [type]                   [description]
+     */
+    public function read(Request $request,$verification_key)
+    {
+        $verifyData = Cache::get($verification_key);
+
+        if (!$verifyData) {
+            abort(422, '验证码已失效');
+        }
+
+        if (!hash_equals($verifyData['code'], $request->param('verification_code'))) {
+            // 返回401
+            abort(401, '验证码错误');
+        }
+        //清除验证码缓存
+        //Cache::rm($verifyData);
+        return true;
+    }
 }

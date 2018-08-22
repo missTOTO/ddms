@@ -35,7 +35,7 @@ class Users
     	$Users = Model('Users');
     	$result = $Users->validate(true)->isUpdate(true)->save($data, ['id' => $id]);
     	if (false === $result) {
-    		return $Users->getError();
+    		abort('422',$Users->getError());
     	} else {
     		return $result;
     	}

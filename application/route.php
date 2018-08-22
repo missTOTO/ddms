@@ -10,31 +10,31 @@
 // +----------------------------------------------------------------------
 use think\Route;
 
-Route::group('api/:version', function(){
+Route::group(['name' => 'api/:version', 'prefix' => 'api/:version'], function(){
 	//用户
-	Route::group('users', function(){
-		Route::resource('/','api/:version.Users');
+	Route::group(['name' => 'users'], function(){
+		Route::resource('/', '.Users');
 		//修改用户头像
-		Route::post(':id/head','api/:version.Users/head');
+		Route::post(':id/head', '.Users/head');
 	});
 	//课程
-	Route::group('lessons', function(){
-		Route::resource('/','api/:version.Lesson');
+	Route::group(['name'=>'lessons'], function(){
+		Route::resource('/','.Lesson');
 		//课程目录
-		Route::get(':lesson_id/catalogs','api/:version.Lesson/catalog');
+		Route::get(':lesson_id/catalogs','.Lesson/catalog');
 		//课程内容
-		Route::get('catalogs/:catelog_id$','api/:version.Lesson/content');
+		Route::get('catalogs/:catelog_id$','.Lesson/content');
 		//评论列表
-		Route::get('catalogs/:catelog_id/replies','api/:version.Lesson/replies');
+		Route::get('catalogs/:catelog_id/replies','.Lesson/replies');
 		//保存评论
-		Route::post('catalogs/replies','api/:version.Lesson/submitReplies');
+		Route::post('catalogs/replies','.Lesson/submitReplies');
 		
 	});
 	//验证码
-	Route::resource('verificationCodes','api/:version.VerificationCodes');
+	Route::resource('verificationCodes','.VerificationCodes', ['var'=>['verificationCodes'=>'verification_key']]);
 });
 
-return [
+/*return [
 	//定义资源路由
 	'__rest__' =>[
 	
@@ -50,4 +50,4 @@ return [
         'name' => '\w+',
     ],
    
-];
+];*/

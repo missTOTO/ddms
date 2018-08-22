@@ -12,5 +12,8 @@ use think\Model;
 
 class Users extends Model
 {
+
 	protected $field = ['id', 'name', 'phone', 'sex', 'birthday', 'city', 'school', 'hobby'];
+
+	
 }

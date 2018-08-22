@@ -48,7 +48,7 @@ class Users
         // Endpoint以杭州为例，其它Region请按实际情况填写。
         $endpoint = "http://oss-cn-beijing.aliyuncs.com";
         // 存储空间名称
-        $bucket= "dangdaimingshi";
+        $bucket = "dangdaimingshi";
         // 文件名称
         $object = "head/head_image";
         // <yourLocalFile>由本地文件路径加文件名包括后缀组成，例如/users/local/myfile.txt
